@@ -3,7 +3,7 @@
 ##Date: 
 
 #don't forget to import regex
-
+import re
 
 ##(/5) Task 1: MODIFY the code below.
 #A# Change the regex from .* to what is required to capture an email address
@@ -14,13 +14,14 @@ def reEmail(fname):
   
   fhand = open(fname,'r')
   for line in fhand:
-    extr = re.findall('.*',line)
+    extr = re.findall('\S*@\S*',line)
     if len(extr): 
       print(extr)
         
 
   print()
-    
+#reEmail('rural-staff.txt')
+   
 
 '''### Task 1 Results for 
 >reEmail('rural-staff.txt')
@@ -37,10 +38,10 @@ There were 89 email addresses in rural-staff.txt
 def reAward(fname):
   fhand = open(fname, 'r')
   for line in fhand:
-    extr = re.findall('.*', line)
+    extr = re.findall('-.*', line)
     if len(extr):
       print(extr)
-
+#reAward('rural-athletics.txt')
 '''### Task 2 Results for
 >reAward('rural-athletics.txt')
 ['Devon Lawlor']
@@ -51,13 +52,12 @@ def reAward(fname):
 ##(/5) Task 3: CREATE code that will open a file and extract all the phone numbers 
 
 def rePhone(fname):
-  #open file
-  #loop through the file
-  #extract the specific phone numbers regex
-  #if the length of the extraction is not empty
-  #print the phone number
-  pass
-
+  fhand = open(fname, 'r')
+  for line in fhand:
+    extr = re.findall('902.*', line)
+    if len(extr):
+      print(extr)
+#rePhone('rural-staff.txt')
 '''### Task 3 results
 >rePhone('rural-staff.txt')
 ['902-368-6905']
